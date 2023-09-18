@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     //Se ejecuta al presionar boton "send"
    public void sendMesage(View view) {
        Intent intent = new Intent(MainActivity.this, DisplayMessageActivity.class);
-       String message = binding.txtApp.getText().toString();
-       intent.putExtra("value", message);
+       String message = binding.txtNombre.getText().toString();
+       intent.putExtra("nombre", message);
        startActivity(intent);
     }
 }

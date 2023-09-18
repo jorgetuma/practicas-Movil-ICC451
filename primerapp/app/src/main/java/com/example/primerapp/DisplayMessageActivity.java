@@ -20,7 +20,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra("value");
+        String message = intent.getStringExtra("nombre");
         binding.showMessage.setText(message);
 
     }
