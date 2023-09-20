@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">primerapp</string>
+    <string name="app_name">Mi primer app</string>
 
     <string-array name="generos">
         <item>Masculino</item>

@@ -20,8 +20,11 @@ public class DisplayMessageActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra("nombre");
-        binding.showMessage.setText(message);
-
+        String Nombre = intent.getStringExtra("nombre");
+        String genero = intent.getStringExtra("genero");
+        String nacimiento = intent.getStringExtra("fecha");
+        boolean es_si = intent.getBooleanExtra("si",false);
+        binding.txtView1.setText("Hola!, mi nombre es: " + Nombre +".");
+        binding.txtView2.setText("Soy " + genero + ",y naci en fecha" + "\n" + nacimiento);
     }
 }
