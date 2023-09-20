@@ -141,7 +141,7 @@
             app:layout_constraintStart_toStartOf="@+id/rgbtn_botones"
             android:layout_marginStart="76dp" android:layout_marginEnd="77dp"/>
     <CheckBox
-            android:text="Golang "
+            android:text="Golang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/cbx_golang"
             android:layout_marginTop="20dp"

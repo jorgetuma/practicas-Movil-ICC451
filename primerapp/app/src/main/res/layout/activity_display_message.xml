@@ -26,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/txt_view3"
             app:layout_constraintTop_toBottomOf="@+id/txt_view2"
-            android:layout_marginTop="56dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="28dp" android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+            android:layout_marginTop="60dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:visibility="visible"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

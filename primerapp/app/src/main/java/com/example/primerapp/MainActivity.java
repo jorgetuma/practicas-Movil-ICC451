@@ -42,30 +42,56 @@ public class MainActivity extends AppCompatActivity {
 
             if (binding.rbtnSi.isChecked()) {
                 intent.putExtra("si",true);
+                String lenguajes = new String();
                 if (binding.cbxJava.isChecked()) {
-                    intent.putExtra("java",binding.cbxJava.getText().toString());
+                    if(lenguajes.isEmpty()) {
+                        lenguajes = binding.cbxJava.getText().toString();
+                    }else {
+                        lenguajes = " " + binding.cbxJava.getText().toString();
+                    }
                     cant_lang++;
                 }
                 if (binding.cbxJs.isChecked()) {
-                    intent.putExtra("js",binding.cbxJs.getText().toString());
+                    if(lenguajes.isEmpty()) {
+                        lenguajes = binding.cbxJs.getText().toString();
+                    }else {
+                        lenguajes += " " + binding.cbxJs.getText().toString();
+                    }
                     cant_lang++;
                 }
                 if (binding.cbxClang.isChecked()) {
-                    intent.putExtra("clang",binding.cbxClang.getText().toString());
+                    if(lenguajes.isEmpty()) {
+                        lenguajes = binding.cbxClang.getText().toString();
+                    }else {
+                        lenguajes += " " + binding.cbxClang.getText().toString();
+                    }
                     cant_lang++;
                 }
                 if (binding.cbxPython.isChecked()) {
-                    intent.putExtra("python",binding.cbxPython.getText().toString());
+                    if(lenguajes.isEmpty()) {
+                        lenguajes = binding.cbxPython.getText().toString();
+                    }else {
+                        lenguajes += " " + binding.cbxPython.getText().toString();
+                    }
                     cant_lang++;
                 }
                 if (binding.cbxGolang.isChecked()) {
-                    intent.putExtra("golang",binding.cbxGolang.getText().toString());
+                    if(lenguajes.isEmpty()) {
+                        lenguajes = binding.cbxGolang.getText().toString();
+                    }else {
+                        lenguajes+= " " + binding.cbxGolang.getText().toString();
+                    }
                     cant_lang++;
                 }
                 if (binding.cbxCsharp.isChecked()) {
-                    intent.putExtra("csharp",binding.cbxCsharp.getText().toString());
+                    if(lenguajes.isEmpty()) {
+                        lenguajes = binding.cbxCsharp.getText().toString();
+                    }else {
+                        lenguajes += " " + binding.cbxCsharp.getText().toString();
+                    }
                     cant_lang++;
                 }
+                intent.putExtra("lenguajes",lenguajes);
                 if (cant_lang > 0) {
                     startActivity(intent);
                 }else {

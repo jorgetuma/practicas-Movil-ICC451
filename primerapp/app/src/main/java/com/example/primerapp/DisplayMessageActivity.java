@@ -4,9 +4,6 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.primerapp.databinding.ActivityDisplayMessageBinding;
-import com.example.primerapp.databinding.ActivityMainBinding;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class DisplayMessageActivity extends AppCompatActivity {
 
@@ -23,8 +20,18 @@ public class DisplayMessageActivity extends AppCompatActivity {
         String Nombre = intent.getStringExtra("nombre");
         String genero = intent.getStringExtra("genero");
         String nacimiento = intent.getStringExtra("fecha");
+        String lenguajes = intent.getStringExtra("lenguajes");
         boolean es_si = intent.getBooleanExtra("si",false);
         binding.txtView1.setText("Hola!, mi nombre es: " + Nombre +".");
-        binding.txtView2.setText("Soy " + genero + ",y naci en fecha" + "\n" + nacimiento);
+        binding.txtView2.setText("Soy " + genero + ",y naci en fecha" + "\n" + nacimiento + ".");
+
+        if(es_si) {
+          String lang = lenguajes.replace(" ",",");
+          binding.txtView3.setText("Me gusta programar. Mis lenguajes" + "\n" + "favoritos son: " + lang + ".");
+        }
+
+        if (!es_si) {
+            binding.txtView3.setText("No me gusta programar.");
+        }
     }
 }
