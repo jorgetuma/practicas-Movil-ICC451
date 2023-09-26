@@ -19,7 +19,7 @@
             android:layout_height="wrap_content" android:id="@+id/btn_rv"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginEnd="27dp" android:layout_marginBottom="30dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" android:onClick="recyclerView"/>
     <ListView
             android:layout_width="0dp"
             android:layout_height="0dp"

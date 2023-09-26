@@ -1,6 +1,7 @@
 package com.jorgetuma.listartareas;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         tareas = new ArrayList<>();
-        
+
        adapter = new TareaAdapter(this,R.layout.list_view,tareas);
         binding.appListView.setAdapter(adapter);
         binding.appListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -81,5 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    public void recyclerView(View view) {
+        Intent intent = new Intent(MainActivity.this,RVActivity.class);
+        startActivity(intent);
     }
 }
