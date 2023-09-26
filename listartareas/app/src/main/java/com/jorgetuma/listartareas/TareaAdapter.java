@@ -38,7 +38,7 @@ public class TareaAdapter extends BaseAdapter {
     public void add(String object) {
         tareas.add(object);
     }
-    
+
     public void remove(int index) {
         tareas.remove(index);
     }

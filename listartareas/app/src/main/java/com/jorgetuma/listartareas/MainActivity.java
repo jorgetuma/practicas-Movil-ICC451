@@ -24,10 +24,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         tareas = new ArrayList<>();
-
-        tareas.add("Hola");
-        tareas.add("Mundo");
-
+        
        adapter = new TareaAdapter(this,R.layout.list_view,tareas);
         binding.appListView.setAdapter(adapter);
         binding.appListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
