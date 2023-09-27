@@ -1,7 +1,7 @@
 package com.jorgetuma.listartareas;
 
 public class Tarea {
-    private final  String nombre;
+    private String nombre;
 
     public Tarea(String nombre) {
         this.nombre = nombre;
@@ -9,5 +9,9 @@ public class Tarea {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

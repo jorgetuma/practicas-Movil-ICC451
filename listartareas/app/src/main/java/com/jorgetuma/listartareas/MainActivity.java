@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     private ArrayList<String> tareas;
-    private TareaAdapter adapter;
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         tareas = new ArrayList<>();
 
-       adapter = new TareaAdapter(this,R.layout.list_view,tareas);
+       adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,tareas);
         binding.appListView.setAdapter(adapter);
         binding.appListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        adapter.remove(position);
+                        adapter.remove(tareas.get(position));
                     }
                 });
 
