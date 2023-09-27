@@ -32,7 +32,6 @@ public class RVActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         tareas = new ArrayList<Tarea>();
         binding.RVLista.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        tareas.add(new Tarea("hola"));
         adapter = new TareaAdapterRV(tareas);
         binding.RVLista.setAdapter(adapter);
     }
