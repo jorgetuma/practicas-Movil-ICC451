@@ -13,7 +13,7 @@
             android:layout_height="wrap_content" android:id="@+id/btn_add"
             app:layout_constraintStart_toStartOf="@+id/RV_lista"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="24dp" android:layout_marginBottom="28dp"/>
+            android:layout_marginStart="24dp" android:layout_marginBottom="28dp" android:onClick="agregarTarea"/>
     <Button
             android:text="Listview"
             android:layout_width="wrap_content"

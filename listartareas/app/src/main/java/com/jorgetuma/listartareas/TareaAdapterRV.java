@@ -1,10 +1,13 @@
 package com.jorgetuma.listartareas;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,8 +30,37 @@ public class TareaAdapterRV extends RecyclerView.Adapter<TareaAdapterRV.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull TareaAdapterRV.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull TareaAdapterRV.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.asignarDatos(tareas.get(position));
+
+        holder.nombre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(holder.nombre.getContext());
+                builder.setTitle("Eliminar tarea");
+                builder.setMessage("¿Estás seguro de que deseas eliminar esta tarea?");
+
+                // Botón "Sí"
+                builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        tareas.remove(position);
+                        notifyItemRemoved(position);
+                    }
+                });
+
+                // Botón "No"
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // No hacer nada.
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
     }
 
     @Override
