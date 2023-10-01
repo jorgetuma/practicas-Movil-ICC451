@@ -29,7 +29,7 @@ public class Tarea {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     public int getId() {
         return id;
     }

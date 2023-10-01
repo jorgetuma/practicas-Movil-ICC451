@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TareaAdapterRV adapter;
 
+    private TareaViewModel model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         binding.RVLista.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         adapter = new TareaAdapterRV( new TareaAdapterRV.TareaDiff());
         binding.RVLista.setAdapter(adapter);
-        TareaViewModel model = new ViewModelProvider(this).get(TareaViewModel.class);
+       model = new ViewModelProvider(this).get(TareaViewModel.class);
 
         model.getmAllTareas().observe(this, tareas -> {
             // Update the cached copy of the words in the adapter.

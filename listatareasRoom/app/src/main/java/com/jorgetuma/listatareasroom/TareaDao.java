@@ -1,5 +1,6 @@
 package com.jorgetuma.listatareasroom;
 
+import android.database.sqlite.SQLiteDatabase;
 import androidx.lifecycle.LiveData;
 import androidx.room.*;
 
@@ -22,4 +23,7 @@ public interface TareaDao {
 
     @Query("SELECT * FROM Tarea WHERE id = :id")
     Tarea getTareaById(int id);
+
+    @Query("DELETE FROM Tarea")
+    void deleteAll();
 }
