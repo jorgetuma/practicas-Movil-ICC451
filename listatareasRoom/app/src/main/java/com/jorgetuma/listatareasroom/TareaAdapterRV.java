@@ -11,7 +11,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
-import com.jorgetuma.listatareasroom.Tarea;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -20,9 +19,12 @@ public class TareaAdapterRV extends ListAdapter<Tarea,TareaAdapterRV.ViewHolder>
 
     private  ArrayList<Tarea>  tareas;
 
-    public TareaAdapterRV(@NonNull DiffUtil.ItemCallback<Tarea> diffCallback) {
+    private TareaRepository mRepo;
+
+    public TareaAdapterRV(@NonNull DiffUtil.ItemCallback<Tarea> diffCallback, ArrayList<Tarea> t, TareaRepository mRepository) {
         super(diffCallback);
-        tareas = new ArrayList<Tarea>();
+        tareas = t;
+        mRepo = mRepository;
     }
 
     @NonNull
@@ -48,6 +50,7 @@ public class TareaAdapterRV extends ListAdapter<Tarea,TareaAdapterRV.ViewHolder>
                 builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        mRepo.remove(tareas.get(position));
                         tareas.remove(position);
                         notifyItemRemoved(position);
                     }
@@ -85,9 +88,6 @@ public class TareaAdapterRV extends ListAdapter<Tarea,TareaAdapterRV.ViewHolder>
         }
     }
 
-    public void submitList(ArrayList<Tarea> tareas) {
-        this.tareas = tareas;
-    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView nombre;

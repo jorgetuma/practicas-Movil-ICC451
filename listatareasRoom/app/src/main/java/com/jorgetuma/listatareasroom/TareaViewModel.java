@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TareaViewModel extends AndroidViewModel {
 
-    private TareaRepository mRepository;
+    public TareaRepository mRepository;
 
     private final LiveData<List<Tarea>> mAllTareas;
 
@@ -22,4 +22,6 @@ public class TareaViewModel extends AndroidViewModel {
     public LiveData<List<Tarea>> getmAllTareas() { return mAllTareas; }
 
     public void insert(Tarea tarea) { mRepository.insert(tarea); }
+
+    public void remove(Tarea tarea) {mRepository.remove(tarea);}
 }

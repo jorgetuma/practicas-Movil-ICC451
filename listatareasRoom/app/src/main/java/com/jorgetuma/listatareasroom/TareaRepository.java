@@ -30,4 +30,17 @@ public class TareaRepository {
             mTareaDao.insert(tarea);
         });
     }
+
+    void remove(Tarea tarea) {
+        TareaDb.databaseWriteExecutor.execute(() -> {
+            mTareaDao.delete(tarea);
+        });
+    }
+
+    void update(Tarea tarea) {
+            TareaDb.databaseWriteExecutor.execute(() -> {
+                mTareaDao.update(tarea);
+            });
+    }
 }
+
