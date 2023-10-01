@@ -15,7 +15,7 @@ public abstract class TareaDb  extends RoomDatabase {
     private static TareaDb instancia = null;
 
     private static final int NUMBER_OF_THREADS = 4;
-    
+
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 

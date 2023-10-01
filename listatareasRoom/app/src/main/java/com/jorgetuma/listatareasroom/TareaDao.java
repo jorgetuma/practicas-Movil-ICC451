@@ -1,23 +1,25 @@
 package com.jorgetuma.listatareasroom;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.*;
 
 import java.util.List;
 
 @Dao
 public interface TareaDao {
-    @Insert
-    void insertTarea(Tarea tarea);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insert(Tarea tarea);
 
     @Update
-    void updateTarea(Tarea tarea);
+    void update(Tarea tarea);
 
     @Delete
-    void deleteTarea(Tarea tarea);
+    void delete(Tarea tarea);
 
     @Query("SELECT * FROM Tarea")
-    List<Tarea> getAllTareas();
+    LiveData<List<Tarea>> getAllTareas();
 
-    @Query("SELECT * FROM Tarea WHERE id = :taskId")
+    @Query("SELECT * FROM Tarea WHERE id = :id")
     Tarea getTareaById(int id);
 }
