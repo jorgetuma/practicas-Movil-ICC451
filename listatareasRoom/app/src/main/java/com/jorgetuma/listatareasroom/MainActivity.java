@@ -2,6 +2,7 @@ package com.jorgetuma.listatareasroom;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.jorgetuma.listatareasroom.databinding.ActivityMainBinding;
 
@@ -23,7 +24,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         tareas = new ArrayList<Tarea>();
         binding.RVLista.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        adapter = new TareaAdapterRV(tareas);
+        adapter = new TareaAdapterRV( new TareaAdapterRV.TareaDiff());
         binding.RVLista.setAdapter(adapter);
+        TareaViewModel model = new ViewModelProvider(this).get(TareaViewModel.class);
+
+        model.getmAllTareas().observe(this, tareas -> {
+            // Update the cached copy of the words in the adapter.
+            adapter.submitList(tareas);
+        });
     }
 }

@@ -8,18 +8,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import com.jorgetuma.listatareasroom.Tarea;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class TareaAdapterRV extends RecyclerView.Adapter<TareaAdapterRV.ViewHolder> {
+public class TareaAdapterRV extends ListAdapter<Tarea,TareaAdapterRV.ViewHolder> {
 
-    private final ArrayList<Tarea>  tareas;
+    private  ArrayList<Tarea>  tareas;
 
-    public TareaAdapterRV(ArrayList<Tarea> tareas) {
-        this.tareas = tareas;
+    public TareaAdapterRV(@NonNull DiffUtil.ItemCallback<Tarea> diffCallback) {
+        super(diffCallback);
+        tareas = new ArrayList<Tarea>();
     }
 
     @NonNull
@@ -67,6 +70,23 @@ public class TareaAdapterRV extends RecyclerView.Adapter<TareaAdapterRV.ViewHold
     @Override
     public int getItemCount() {
         return tareas.size();
+    }
+
+    public static class TareaDiff extends DiffUtil.ItemCallback<Tarea> {
+
+        @Override
+        public boolean areItemsTheSame(@NonNull Tarea oldItem, @NonNull Tarea newItem) {
+            return oldItem == newItem;
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Tarea oldItem, @NonNull Tarea newItem) {
+            return oldItem.getNombre().equals(newItem.getNombre());
+        }
+    }
+
+    public void submitList(ArrayList<Tarea> tareas) {
+        this.tareas = tareas;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

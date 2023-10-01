@@ -19,7 +19,7 @@ public class TareaViewModel extends AndroidViewModel {
         this.mAllTareas = mRepository.getmAllTareas();
     }
 
-    public LiveData<List<Tarea>> getAllWords() { return mAllTareas; }
+    public LiveData<List<Tarea>> getmAllTareas() { return mAllTareas; }
 
     public void insert(Tarea tarea) { mRepository.insert(tarea); }
 }
