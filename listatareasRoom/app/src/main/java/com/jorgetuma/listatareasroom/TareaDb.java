@@ -28,7 +28,7 @@ public abstract class TareaDb  extends RoomDatabase {
                 if (instancia == null) {
                     instancia = Room.databaseBuilder(context.getApplicationContext(),
                                     TareaDb.class, "tarea_database")
-                           // .addCallback(sRoomDatabaseCallback)
+                            .addCallback(sRoomDatabaseCallback)
                             .fallbackToDestructiveMigration()
                             .build();
                 }
