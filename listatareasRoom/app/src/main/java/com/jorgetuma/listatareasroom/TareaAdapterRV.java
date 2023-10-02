@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -57,11 +58,13 @@ public class TareaAdapterRV extends ListAdapter<Tarea,TareaAdapterRV.ViewHolder>
                         // Realiza la acción correspondiente a la opción seleccionada
                         switch (which) {
                             case 0:
-                                // Opción 1 seleccionada
+                                // Opción 1 deselection
+                                long id = getItemId(position);
                                 Tarea t = tareas.get(position);
                                 t.setCompletada(true);
                                 tareas.set(position,t);
                                 mRepo.update(t);
+                                notifyItemChanged(position);
                                 break;
                             case 1:
                                 // Opción 2 seleccionada
