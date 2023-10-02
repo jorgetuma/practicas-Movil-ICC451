@@ -42,25 +42,38 @@ public class TareaAdapterRV extends ListAdapter<Tarea,TareaAdapterRV.ViewHolder>
         holder.nombre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String[] opciones = {"Completar", "Eliminar", "Cancelar"};
+
+ // Crea un AlertDialog.Builder
                 AlertDialog.Builder builder = new AlertDialog.Builder(holder.nombre.getContext());
-                builder.setTitle("Eliminar tarea");
-                builder.setMessage("¿Estás seguro de que deseas eliminar esta tarea?");
+                builder.setTitle("Selecciona una opción");
 
-                // Botón "Sí"
-                builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+  // Opciones en el diálogo
+                builder.setItems(opciones, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mRepo.remove(tareas.get(position));
-                        tareas.remove(position);
-                        notifyItemRemoved(position);
-                    }
-                });
+                        String opcionSeleccionada = opciones[which];
 
-                // Botón "No"
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // No hacer nada.
+                        // Realiza la acción correspondiente a la opción seleccionada
+                        switch (which) {
+                            case 0:
+                                // Opción 1 seleccionada
+                                Tarea t = tareas.get(position);
+                                t.setCompletada(true);
+                                tareas.set(position,t);
+                                mRepo.update(t);
+                                break;
+                            case 1:
+                                // Opción 2 seleccionada
+                                mRepo.remove(tareas.get(position));
+                                tareas.remove(position);
+                                notifyItemRemoved(position);
+                                break;
+                            case 2:
+                                // Opción 3 seleccionada
+                                dialog.dismiss();
+                                break;
+                        }
                     }
                 });
 
@@ -68,6 +81,7 @@ public class TareaAdapterRV extends ListAdapter<Tarea,TareaAdapterRV.ViewHolder>
                 dialog.show();
             }
         });
+
     }
 
     @Override
