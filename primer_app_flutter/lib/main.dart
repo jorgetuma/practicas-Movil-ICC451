@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
             ),
-            // Agregar un widget de diseño (por ejemplo, una imagen)
+            // Agregar un widget de diseño
             Image.asset(
               'assets/flutter_logo.png',
               width: 150,
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ElevatedButton(
           onPressed: _incrementCounter,
           style: ElevatedButton.styleFrom(
-            primary: Colors.blue, // Puedes personalizar el color del botón aquí
+            primary: Colors.blue,
           ),
           child: Icon(Icons.add),
         ),
